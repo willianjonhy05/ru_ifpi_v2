@@ -1,0 +1,95 @@
+{
+  "01-12": {
+    "dia": "segunda-feira",
+    "almoco": [
+      "Bife ao Molho",
+      "Baião de Dois",
+      "Batata doce / Macaxeira",
+      "Salada",
+      "Fruta"
+    ],
+    "janta": [
+      "Frango Assado",
+      "Arroz",
+      "Feijão com Legumes",
+      "Farofa",
+      "Salada",
+      "Fruta"
+    ]
+  },
+  "02-12": {
+    "dia": "terça-feira",
+    "almoco": [
+      "Lombo suíno ao molho barbecue",
+      "Arroz",
+      "Feijão preto",
+      "Farofa",
+      "Salada",
+      "Fruta"
+    ],
+    "janta": [
+      "Assado de panela",
+      "Arroz com açafrão",
+      "Feijão com legumes",
+      "Farofa",
+      "Salada",
+      "Fruta"
+    ]
+  },
+  "03-12": {
+    "dia": "quarta-feira",
+    "almoco": [
+      "Frango assado",
+      "Arroz com açafrão",
+      "Feijão com legumes",
+      "Farofa",
+      "Salada",
+      "Fruta"
+    ],
+    "janta": [
+      "Lombo suíno ao molho barbecue",
+      "Arroz",
+      "Feijão com legumes",
+      "Farofa",
+      "Salada",
+      "Fruta"
+    ]
+  },
+  "04-12": {
+    "dia": "quinta-feira",
+    "almoco": [
+      "Maria Isabel",
+      "Creme de galinha",
+      "Feijão tropeiro",
+      "Salada",
+      "Fruta"
+    ],
+    "janta": [
+      "Filé de frango grelhado",
+      "Arroz",
+      "Feijão com legumes",
+      "Macarrão",
+      "Salada",
+      "Fruta"
+    ]
+  },
+  "05-12": {
+    "dia": "sexta-feira",
+    "almoco": [
+      "Trinchado",
+      "Arroz",
+      "Feijão com legumes",
+      "Macarrão",
+      "Salada",
+      "Fruta"
+    ],
+    "janta": [
+      "Tábua mista",
+      "Arroz com açafrão",
+      "Feijão com legumes",
+      "Farofa",
+      "Salada",
+      "Fruta"
+    ]
+  }
+}
