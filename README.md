@@ -1,44 +1,48 @@
-# 📅 Cardápio Semanal do RU
+# 📅 Cardápio Semanal do RU – IFPI Teresina Central
 
-Aplicação simples, moderna e responsiva para exibir o **cardápio semanal do Refeitório do Campus Teresina Central do IFPI**, com suporte a *dark mode*, animações, exibição de datas e seleção de refeições.
+Aplicação moderna, rápida e totalmente responsiva para exibir o **cardápio semanal do Refeitório do IFPI Campus Teresina Central**, com suporte a *dark mode*, animações, seleção de datas, detecção automática da refeição atual e exibição do horário de funcionamento.
 
 ---
 
 ## 🚀 Funcionalidades
 
-* ✔️ Seleção de **data**
-* ✔️ Escolha entre **Almoço**, **Janta** ou **Ambas**
-* ✔️ Layout 100% **responsivo** (mobile first)
-* ✔️ **Modo escuro** com preferência salva no navegador
-* ✔️ Exibição de **última atualização** do cardápio
-* ✔️ Animações suaves para os cards
-* ✔️ Ícones e emojis para melhorar a experiência
-* ✔️ Horário de funcionamento do RU exibido no rodapé
+- ✔️ Seleção de **data** do cardápio  
+- ✔️ Escolha entre **Almoço**, **Janta** ou **Ambas**  
+- ✔️ **Carregamento automático inteligente** da refeição do dia  
+  - Detecta se é almoço ou janta  
+  - Após 19h, carrega automaticamente o **almoço do dia seguinte**  
+- ✔️ Exibição do **status atual do refeitório**  
+  - "Estamos servindo agora: almoço/janta"  
+  - "Próxima refeição: …"  
+- ✔️ **Modo escuro persistente** (salvo no navegador)  
+- ✔️ Animações suaves nos cards  
+- ✔️ Layout 100% **responsivo** (mobile first)  
+- ✔️ Exibição da **última atualização** do cardápio  
+- ✔️ Uso de JSON para manter os dados organizados  
+- ✔️ Interface limpa, simples e leve  
 
 ---
-
-
 
 ## 🛠️ Tecnologias Utilizadas
 
+Este projeto foi construído usando tecnologias simples e eficientes, com foco em velocidade e compatibilidade:
 
-Este projeto foi desenvolvido utilizando um conjunto de tecnologias simples, modernas e eficientes para garantir desempenho, acessibilidade e boa experiência no celular e no desktop:
+- **HTML5** – estrutura semântica, meta tags completas e SEO otimizado  
+- **CSS3** – responsividade nativa, animações, variáveis, e modo escuro  
+- **JavaScript Vanilla (ES6+)** –  
+  - carregamento do `data.json`,  
+  - sistema de filtros,  
+  - animações,  
+  - status automático do RU,  
+  - dark mode persistente,  
+  - regra especializada da refeição pós-19h  
+- **JSON** – armazenamento das refeições por dia  
+- **Fetch API** – leitura assíncrona do arquivo de dados  
+- **LocalStorage** – mantém o dark mode ativado entre recargas  
+- **Acessibilidade** via ARIA Live na área de resultados  
 
-* HTML5 — Estrutura semântica da página e organização do conteúdo.
-
-* CSS3 — Estilização responsiva, animações, gradientes e suporte a modo escuro automático.
-
-* JavaScript Vanilla (ES6+) — Lógica de carregamento do data.json, renderização dinâmica dos cardápios, sistema de filtros, animações, e persistência de preferências no localStorage.
-
-* JSON — Armazenamento dos cardápios de cada dia e metadados como a data da última atualização.
-
-* Fetch API — Para buscar o arquivo data.json de forma assíncrona.
-
-* LocalStorage — Armazena a preferência do usuário para manter o modo escuro ativado mesmo ao recarregar a página.
-
-* Responsividade nativa — Todo o layout foi pensado para funcionar perfeitamente em celulares, tablets e desktops, sem necessidade de frameworks adicionais.
- 
 ---
+
 
 ## 🗂️ Estrutura dos Arquivos
 
