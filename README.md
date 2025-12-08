@@ -63,6 +63,24 @@ Se estiver utilizando `fetch()`, hospede o projeto em qualquer serviço simples,
 ---
 
 
+🛠️ Tecnologias Utilizadas
+
+Este projeto foi desenvolvido utilizando um conjunto de tecnologias simples, modernas e eficientes para garantir desempenho, acessibilidade e boa experiência no celular e no desktop:
+
+HTML5 — Estrutura semântica da página e organização do conteúdo.
+
+CSS3 — Estilização responsiva, animações, gradientes e suporte a modo escuro automático.
+
+JavaScript Vanilla (ES6+) — Lógica de carregamento do data.json, renderização dinâmica dos cardápios, sistema de filtros, animações, e persistência de preferências no localStorage.
+
+JSON — Armazenamento dos cardápios de cada dia e metadados como a data da última atualização.
+
+Fetch API — Para buscar o arquivo data.json de forma assíncrona.
+
+LocalStorage — Armazena a preferência do usuário para manter o modo escuro ativado mesmo ao recarregar a página.
+
+Responsividade nativa — Todo o layout foi pensado para funcionar perfeitamente em celulares, tablets e desktops, sem necessidade de frameworks adicionais.
+
 ## 📝 Licença
 
 Projeto livre para uso e modificação.
