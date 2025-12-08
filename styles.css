@@ -50,7 +50,7 @@ body{
   border:1px solid rgba(255,255,255,0.03);
 }
 
-.app-header h1{font-size:1.25rem;margin:0}
+.app-header h1{font-size:1.50rem;margin:0}
 .subtitle{font-size:0.85rem;color:var(--muted);margin-top:4px}
 
 /* header actions */
@@ -161,10 +161,10 @@ body.dark .meal-item .icon{background:rgba(96,165,250,0.08)}
 }
 
 
-.update-info::before {
+/* .update-info::before {
   content: "📅";
   font-size: 0.9rem;
-}
+} */
 
 
 @keyframes fadeInUp {

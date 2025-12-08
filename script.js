@@ -41,32 +41,63 @@ const loadBtn = document.getElementById('loadBtn');
 const output = document.getElementById('output');
 const lastUpdateEl = document.getElementById('lastUpdate');
 
+// 🔥 NOVA REF DO STATUS DO REFEITÓRIO
+const statusRefeitorio = document.getElementById('statusRefeitorio');
+
 let DATA_STORE = null;
 
-// 🔥 NOVA FUNÇÃO → detecta a refeição com regra dos 19h + almoço do dia seguinte
+// 🔥 NOVA FUNÇÃO: Status de refeição aberta / próxima refeição
+function atualizarStatusRefeitorio() {
+  const agora = new Date();
+  const hora = agora.getHours();
+  const minuto = agora.getMinutes();
+  const hm = hora * 100 + minuto;
+
+  let mensagem = "";
+
+  // Horários
+  const almocoInicio = 1130;
+  const almocoFim = 1330;
+
+  const jantaInicio = 1700;
+  const jantaFim = 1900;
+
+  if ((hm >= almocoInicio && hm <= almocoFim)) {
+    mensagem = "🍽️ Estamos servindo agora: almoço";
+  }
+  else if (hm >= jantaInicio && hm <= jantaFim) {
+    mensagem = "🍽️ Estamos servindo agora: janta";
+  }
+  else {
+    if (hm < almocoInicio) {
+      mensagem = "🍽️ A próxima refeição é: almoço";
+    }
+    else if (hm > almocoFim && hm < jantaInicio) {
+      mensagem = "🍽️ A próxima refeição é: janta";
+    }
+    else if (hm > jantaFim) {
+      mensagem = "🍽️ A próxima refeição é: almoço de amanhã";
+    }
+  }
+
+  statusRefeitorio.textContent = mensagem;
+}
+
+// 🔥 FUNÇÃO QUE DETECTA REFEIÇÃO AUTOMÁTICA + REGRA DAS 19H
 function detectarRefeicaoAtualComRegra() {
   const agora = new Date();
   const hora = agora.getHours();
   const minuto = agora.getMinutes();
   const hm = hora * 100 + minuto;
 
-  // Após 19h → exibir almoço do dia seguinte
   if (hm > 1900) return "proximo_almoco";
-
-  // Almoço: 11h30–13h30
   if (hm >= 1130 && hm <= 1330) return "almoco";
-
-  // Janta: 17h00–19h00
   if (hm >= 1700 && hm <= 1900) return "janta";
-
-  // Entre almoço e janta → próxima é janta
   if (hm > 1330 && hm < 1700) return "janta";
-
-  // Antes do almoço → próxima é almoço
   return "almoco";
 }
 
-// 🔥 Função que renderiza automaticamente o cardápio
+// 🔥 Carregamento automático com a regra especial
 function carregarAutomatico() {
   const hoje = new Date();
   let dia = hoje.getDate();
@@ -74,9 +105,7 @@ function carregarAutomatico() {
 
   const refeicaoDetectada = detectarRefeicaoAtualComRegra();
 
-  // Regras especiais
   if (refeicaoDetectada === "proximo_almoco") {
-    // Passou das 19h → avança o dia
     const amanha = new Date(hoje);
     amanha.setDate(hoje.getDate() + 1);
     dia = amanha.getDate();
@@ -90,7 +119,6 @@ function carregarAutomatico() {
   if (DATA_STORE[chave]) {
     dateSelect.value = chave;
 
-    // Se for próximo dia → sempre carregar almoço
     if (refeicaoDetectada === "proximo_almoco") {
       mealSelect.value = "almoco";
     } else {
@@ -142,7 +170,7 @@ function renderMealCard(title, subtitle, itens, emoji){
   return card;
 }
 
-// 🔥 Função isolada para renderizar o cardápio
+// 🔥 Função principal de renderização
 function carregarCardapio() {
   output.innerHTML = '';
   const selected = dateSelect.value;
@@ -204,7 +232,7 @@ async function init(){
     DATA_STORE = dados;
 
     if (dados.ultima_atualizacao) {
-      lastUpdateEl.textContent = "Atualizado em " + dados.ultima_atualizacao;
+      lastUpdateEl.textContent = "📅 Atualizado em " + dados.ultima_atualizacao;
     }
 
     dateSelect.innerHTML = '<option value="">Selecione a data...</option>';
@@ -217,7 +245,6 @@ async function init(){
       dateSelect.appendChild(opt);
     });
 
-    // 🔥 Após carregar datas → carregamento automático com regra dos 19h
     carregarAutomatico();
 
   } catch(err) {
@@ -228,4 +255,7 @@ async function init(){
 }
 
 // initialize on load
-document.addEventListener('DOMContentLoaded', init);
+document.addEventListener('DOMContentLoaded', () => {
+  init();
+  atualizarStatusRefeitorio();  // 🔥 NOVA FUNÇÃO EXECUTADA AQUI
+});
