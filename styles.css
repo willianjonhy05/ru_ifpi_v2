@@ -180,3 +180,10 @@ body.dark .update-info {
 
 /* footer */
 .footer{margin-top:18px;text-align:center;color:var(--muted);font-size:0.85rem}
+
+.footer .aviso {
+  margin-top: 12px;
+  font-size: 0.9rem;
+  opacity: 0.75;
+  font-style: italic;
+}
