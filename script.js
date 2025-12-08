@@ -3,8 +3,7 @@
 
 // util: format option label -> "terça-feira (02)"
 function optionLabel(dia, key){
-  // key expected like "01-12" or "02-12"
-  const dayNumber = (key.split('-')[0] || key).replace(/^0/,'0'); // keep leading zero
+  const dayNumber = key.split('-')[0];
   return `${dia} (${dayNumber})`;
 }
 
@@ -35,9 +34,8 @@ darkToggle.addEventListener('click', () => {
   setDarkState(!body.classList.contains('dark'));
 });
 
-// optional: simple high-contrast toggle (placeholder - toggles a border-heavy style)
+// optional: high-contrast toggle
 prefersContrastBtn.addEventListener('click', () => {
-  // quick visual accent toggle (not persistent)
   document.querySelectorAll('.meal-item .icon').forEach(el => {
     el.style.boxShadow = el.style.boxShadow ? '' : '0 0 0 3px rgba(255,255,255,0.04) inset';
   });
@@ -51,6 +49,9 @@ const output = document.getElementById('output');
 
 let DATA_STORE = null;
 
+// NOVO: referência ao campo de atualização
+const lastUpdateEl = document.getElementById('lastUpdate');
+
 // fetch data.json and populate dates
 async function init(){
   try {
@@ -59,17 +60,24 @@ async function init(){
     const dados = await resp.json();
     DATA_STORE = dados;
 
+    // NOVO: mostra última atualização
+    if (dados.ultima_atualizacao) {
+      lastUpdateEl.textContent = "Atualizado em " + dados.ultima_atualizacao;
+    } else {
+      lastUpdateEl.textContent = "Atualizado recentemente";
+    }
+
     // clear and populate
     dateSelect.innerHTML = '<option value="">Selecione a data...</option>';
     Object.keys(dados).forEach(key => {
+      if (key === "ultima_atualizacao") return; // ignora o campo novo
+
       const opt = document.createElement('option');
       opt.value = key;
       opt.textContent = optionLabel(dados[key].dia, key);
       dateSelect.appendChild(opt);
     });
 
-    // If you want to pre-select first option on mobile:
-    // dateSelect.selectedIndex = 1;
   } catch(err) {
     dateSelect.innerHTML = '<option value="">Erro ao carregar datas</option>';
     output.innerHTML = `<div class="card"><p class="meta">Erro: ${err.message}</p></div>`;
@@ -140,7 +148,7 @@ loadBtn.addEventListener('click', () => {
   }
 
   const dayLabel = `${info.dia} (${selected.split('-')[0]})`;
-  // Show selected header card
+
   const headerCard = document.createElement('div');
   headerCard.className = 'card';
   const h2 = document.createElement('h2');
@@ -149,13 +157,15 @@ loadBtn.addEventListener('click', () => {
   headerCard.appendChild(Object.assign(document.createElement('p'), { className: 'meta', textContent: 'Cardápio selecionado' }));
   output.appendChild(headerCard);
 
-  // show selected meal(s)
   if(meal === 'almoco' || meal === 'ambas'){
     if(info.almoco && info.almoco.length){
       const card = renderMealCard('Almoço', '', info.almoco, '🍽️');
       output.appendChild(card);
     } else {
-      const c = document.createElement('div'); c.className='card'; c.innerHTML = `<p class="meta">Sem informação de almoço.</p>`; output.appendChild(c);
+      const c = document.createElement('div'); 
+      c.className='card'; 
+      c.innerHTML = `<p class="meta">Sem informação de almoço.</p>`; 
+      output.appendChild(c);
     }
   }
 
@@ -164,11 +174,13 @@ loadBtn.addEventListener('click', () => {
       const card = renderMealCard('Janta', '', info.janta, '🌙');
       output.appendChild(card);
     } else {
-      const c = document.createElement('div'); c.className='card'; c.innerHTML = `<p class="meta">Sem informação de janta.</p>`; output.appendChild(c);
+      const c = document.createElement('div'); 
+      c.className='card'; 
+      c.innerHTML = `<p class="meta">Sem informação de janta.</p>`; 
+      output.appendChild(c);
     }
   }
 
-  // smooth scroll to output (mobile-friendly)
   setTimeout(() => {
     output.firstElementChild?.scrollIntoView({behavior:'smooth',block:'start'});
   }, 50);

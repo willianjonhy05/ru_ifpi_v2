@@ -8,17 +8,18 @@
 </head>
 <body>
   <div class="app">
-    <header class="app-header">
-      <div>
-        <h1>Cardápio Semanal</h1>
-        <p class="subtitle">Escolha a data e a refeição — otimizado para celular</p>
-      </div>
+<header class="app-header">
+  <div>
+    <h1>Cardápio Semanal</h1>
+    <p class="subtitle">Escolha a data e a refeição — otimizado para celular</p>
+    <p id="lastUpdate" class="update-info"></p>
+  </div>
 
-      <div class="header-actions">
-        <button id="prefersContrast" class="icon-btn" title="Alternar contraste">🔆</button>
-        <button id="darkToggle" class="icon-btn" aria-pressed="false" title="Ativar modo escuro">🌙</button>
-      </div>
-    </header>
+  <div class="header-actions">
+    <button id="prefersContrast" class="icon-btn" title="Alternar contraste">🔆</button>
+    <button id="darkToggle" class="icon-btn" aria-pressed="false" title="Ativar modo escuro">🌙</button>
+  </div>
+</header>
 
     <main class="main">
       <form id="filterForm" class="filter-form" onsubmit="return false;">
@@ -40,6 +41,8 @@
 
       <section id="output" class="output" aria-live="polite"></section>
     </main>
+
+
 
     <footer class="footer">
       <small>Design responsivo • Modo escuro • Animações leves</small>
