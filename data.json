@@ -1,16 +1,16 @@
 {
-  "ultima_atualizacao": "02-12-2025",
-  "01-12": {
+  "ultima_atualizacao": "08-12-2025",
+  "08-12": {
     "dia": "segunda-feira",
     "almoco": [
-      "Bife ao Molho",
+      "Estrogonofe de frango",
       "Baião de Dois",
-      "Batata doce / Macaxeira",
+      "Macarrão",
       "Salada",
       "Fruta"
     ],
     "janta": [
-      "Frango Assado",
+      "Tábua Mista",
       "Arroz",
       "Feijão com Legumes",
       "Farofa",
@@ -18,55 +18,50 @@
       "Fruta"
     ]
   },
-  "02-12": {
+  "09-12": {
     "dia": "terça-feira",
     "almoco": [
-      "Lombo suíno ao molho barbecue",
+      "Feijoada",
       "Arroz",
-      "Feijão preto",
       "Farofa",
       "Salada",
       "Fruta"
     ],
     "janta": [
+      "Cuscuz com ovos e calabresa",
+      "Chocolate Quente"
+    ]
+  },
+  "10-12": {
+    "dia": "quarta-feira",
+    "almoco": [
       "Assado de panela",
       "Arroz com açafrão",
       "Feijão com legumes",
       "Farofa",
       "Salada",
       "Fruta"
-    ]
-  },
-  "03-12": {
-    "dia": "quarta-feira",
-    "almoco": [
-      "Frango assado",
-      "Arroz com açafrão",
-      "Feijão com legumes",
-      "Farofa",
-      "Salada",
-      "Fruta"
     ],
     "janta": [
-      "Lombo suíno ao molho barbecue",
-      "Arroz",
-      "Feijão com legumes",
-      "Farofa",
-      "Salada",
-      "Fruta"
-    ]
-  },
-  "04-12": {
-    "dia": "quinta-feira",
-    "almoco": [
       "Maria Isabel",
       "Creme de galinha",
       "Feijão tropeiro",
       "Salada",
       "Fruta"
+    ]
+  },
+  "11-12": {
+    "dia": "quinta-feira",
+    "almoco": [
+      "Filé de frango ao molho rosé",
+      "Arroz",
+      "Feijão com legumes",
+      "Batata doce/macaxeira",
+      "Salada",
+      "Fruta"
     ],
     "janta": [
-      "Filé de frango grelhado",
+      "Bife com cebolas",
       "Arroz",
       "Feijão com legumes",
       "Macarrão",
@@ -74,18 +69,17 @@
       "Fruta"
     ]
   },
-  "05-12": {
+  "12-12": {
     "dia": "sexta-feira",
     "almoco": [
-      "Trinchado",
-      "Arroz",
-      "Feijão com legumes",
+      "Bife ao molho",
+      "Baião de dois",
       "Macarrão",
       "Salada",
       "Fruta"
     ],
     "janta": [
-      "Tábua mista",
+      "Frango assado",
       "Arroz com açafrão",
       "Feijão com legumes",
       "Farofa",
