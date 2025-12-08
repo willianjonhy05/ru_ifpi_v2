@@ -1,5 +1,6 @@
 // script.js
-// Carrega data.json, popula selects, aplica dark mode persistente e exibe cardápios com animação.
+// Carrega data.json, popula selects, aplica dark mode persistente,
+// exibe cardápios com animação e carrega automaticamente a refeição do dia.
 
 // util: format option label -> "terça-feira (02)"
 function optionLabel(dia, key){
@@ -9,7 +10,6 @@ function optionLabel(dia, key){
 
 // persist dark mode preference
 const darkToggle = document.getElementById('darkToggle');
-// const prefersContrastBtn = document.getElementById('prefersContrast');
 const body = document.body;
 
 // initialize preference
@@ -34,54 +34,70 @@ darkToggle.addEventListener('click', () => {
   setDarkState(!body.classList.contains('dark'));
 });
 
-// optional: high-contrast toggle
-// prefersContrastBtn.addEventListener('click', () => {
-//   document.querySelectorAll('.meal-item .icon').forEach(el => {
-//     el.style.boxShadow = el.style.boxShadow ? '' : '0 0 0 3px rgba(255,255,255,0.04) inset';
-//   });
-// });
-
 // DOM refs
 const dateSelect = document.getElementById('dateSelect');
 const mealSelect = document.getElementById('mealSelect');
 const loadBtn = document.getElementById('loadBtn');
 const output = document.getElementById('output');
+const lastUpdateEl = document.getElementById('lastUpdate');
 
 let DATA_STORE = null;
 
-// NOVO: referência ao campo de atualização
-const lastUpdateEl = document.getElementById('lastUpdate');
+// 🔥 NOVA FUNÇÃO → detecta a refeição com regra dos 19h + almoço do dia seguinte
+function detectarRefeicaoAtualComRegra() {
+  const agora = new Date();
+  const hora = agora.getHours();
+  const minuto = agora.getMinutes();
+  const hm = hora * 100 + minuto;
 
-// fetch data.json and populate dates
-async function init(){
-  try {
-    const resp = await fetch('data.json', {cache: "no-store"});
-    if(!resp.ok) throw new Error('Não foi possível carregar data.json');
-    const dados = await resp.json();
-    DATA_STORE = dados;
+  // Após 19h → exibir almoço do dia seguinte
+  if (hm > 1900) return "proximo_almoco";
 
-    // NOVO: mostra última atualização
-    if (dados.ultima_atualizacao) {
-      lastUpdateEl.textContent = "Atualizado em " + dados.ultima_atualizacao;
+  // Almoço: 11h30–13h30
+  if (hm >= 1130 && hm <= 1330) return "almoco";
+
+  // Janta: 17h00–19h00
+  if (hm >= 1700 && hm <= 1900) return "janta";
+
+  // Entre almoço e janta → próxima é janta
+  if (hm > 1330 && hm < 1700) return "janta";
+
+  // Antes do almoço → próxima é almoço
+  return "almoco";
+}
+
+// 🔥 Função que renderiza automaticamente o cardápio
+function carregarAutomatico() {
+  const hoje = new Date();
+  let dia = hoje.getDate();
+  let mes = hoje.getMonth() + 1;
+
+  const refeicaoDetectada = detectarRefeicaoAtualComRegra();
+
+  // Regras especiais
+  if (refeicaoDetectada === "proximo_almoco") {
+    // Passou das 19h → avança o dia
+    const amanha = new Date(hoje);
+    amanha.setDate(hoje.getDate() + 1);
+    dia = amanha.getDate();
+    mes = amanha.getMonth() + 1;
+  }
+
+  const diaStr = String(dia).padStart(2, '0');
+  const mesStr = String(mes).padStart(2, '0');
+  const chave = `${diaStr}-${mesStr}`;
+
+  if (DATA_STORE[chave]) {
+    dateSelect.value = chave;
+
+    // Se for próximo dia → sempre carregar almoço
+    if (refeicaoDetectada === "proximo_almoco") {
+      mealSelect.value = "almoco";
     } else {
-      lastUpdateEl.textContent = "Atualizado recentemente";
+      mealSelect.value = refeicaoDetectada;
     }
 
-    // clear and populate
-    dateSelect.innerHTML = '<option value="">Selecione a data...</option>';
-    Object.keys(dados).forEach(key => {
-      if (key === "ultima_atualizacao") return; // ignora o campo novo
-
-      const opt = document.createElement('option');
-      opt.value = key;
-      opt.textContent = optionLabel(dados[key].dia, key);
-      dateSelect.appendChild(opt);
-    });
-
-  } catch(err) {
-    dateSelect.innerHTML = '<option value="">Erro ao carregar datas</option>';
-    output.innerHTML = `<div class="card"><p class="meta">Erro: ${err.message}</p></div>`;
-    console.error(err);
+    carregarCardapio();
   }
 }
 
@@ -126,9 +142,9 @@ function renderMealCard(title, subtitle, itens, emoji){
   return card;
 }
 
-// Load button handler
-loadBtn.addEventListener('click', () => {
-  output.innerHTML = ''; // clear
+// 🔥 Função isolada para renderizar o cardápio
+function carregarCardapio() {
+  output.innerHTML = '';
   const selected = dateSelect.value;
   const meal = mealSelect.value;
 
@@ -158,33 +174,58 @@ loadBtn.addEventListener('click', () => {
   output.appendChild(headerCard);
 
   if(meal === 'almoco' || meal === 'ambas'){
-    if(info.almoco && info.almoco.length){
+    if(info.almoco?.length){
       const card = renderMealCard('Almoço', '', info.almoco, '🍽️');
       output.appendChild(card);
-    } else {
-      const c = document.createElement('div'); 
-      c.className='card'; 
-      c.innerHTML = `<p class="meta">Sem informação de almoço.</p>`; 
-      output.appendChild(c);
     }
   }
 
   if(meal === 'janta' || meal === 'ambas'){
-    if(info.janta && info.janta.length){
+    if(info.janta?.length){
       const card = renderMealCard('Janta', '', info.janta, '🍽️');
       output.appendChild(card);
-    } else {
-      const c = document.createElement('div'); 
-      c.className='card'; 
-      c.innerHTML = `<p class="meta">Sem informação de janta.</p>`; 
-      output.appendChild(c);
     }
   }
 
   setTimeout(() => {
-    output.firstElementChild?.scrollIntoView({behavior:'smooth',block:'start'});
+    output.firstElementChild?.scrollIntoView({behavior:'smooth', block:'start'});
   }, 50);
-});
+}
+
+// Botão manual
+loadBtn.addEventListener('click', carregarCardapio);
+
+// fetch data.json and populate dates
+async function init(){
+  try {
+    const resp = await fetch('data.json', {cache: "no-store"});
+    if(!resp.ok) throw new Error('Não foi possível carregar data.json');
+    const dados = await resp.json();
+    DATA_STORE = dados;
+
+    if (dados.ultima_atualizacao) {
+      lastUpdateEl.textContent = "Atualizado em " + dados.ultima_atualizacao;
+    }
+
+    dateSelect.innerHTML = '<option value="">Selecione a data...</option>';
+    Object.keys(dados).forEach(key => {
+      if (key === "ultima_atualizacao") return;
+
+      const opt = document.createElement('option');
+      opt.value = key;
+      opt.textContent = optionLabel(dados[key].dia, key);
+      dateSelect.appendChild(opt);
+    });
+
+    // 🔥 Após carregar datas → carregamento automático com regra dos 19h
+    carregarAutomatico();
+
+  } catch(err) {
+    dateSelect.innerHTML = '<option value="">Erro ao carregar datas</option>';
+    output.innerHTML = `<div class="card"><p class="meta">Erro: ${err.message}</p></div>`;
+    console.error(err);
+  }
+}
 
 // initialize on load
 document.addEventListener('DOMContentLoaded', init);
