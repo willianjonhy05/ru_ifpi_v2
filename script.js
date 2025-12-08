@@ -171,7 +171,7 @@ loadBtn.addEventListener('click', () => {
 
   if(meal === 'janta' || meal === 'ambas'){
     if(info.janta && info.janta.length){
-      const card = renderMealCard('Janta', '', info.janta, '🌙');
+      const card = renderMealCard('Janta', '', info.janta, '🍽️');
       output.appendChild(card);
     } else {
       const c = document.createElement('div'); 
