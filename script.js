@@ -9,7 +9,7 @@ function optionLabel(dia, key){
 
 // persist dark mode preference
 const darkToggle = document.getElementById('darkToggle');
-const prefersContrastBtn = document.getElementById('prefersContrast');
+// const prefersContrastBtn = document.getElementById('prefersContrast');
 const body = document.body;
 
 // initialize preference
@@ -35,11 +35,11 @@ darkToggle.addEventListener('click', () => {
 });
 
 // optional: high-contrast toggle
-prefersContrastBtn.addEventListener('click', () => {
-  document.querySelectorAll('.meal-item .icon').forEach(el => {
-    el.style.boxShadow = el.style.boxShadow ? '' : '0 0 0 3px rgba(255,255,255,0.04) inset';
-  });
-});
+// prefersContrastBtn.addEventListener('click', () => {
+//   document.querySelectorAll('.meal-item .icon').forEach(el => {
+//     el.style.boxShadow = el.style.boxShadow ? '' : '0 0 0 3px rgba(255,255,255,0.04) inset';
+//   });
+// });
 
 // DOM refs
 const dateSelect = document.getElementById('dateSelect');
