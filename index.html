@@ -1,35 +1,47 @@
 <!doctype html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content="Confira o cardápio semanal do Refeitório do IFPI Campus Teresina Central. Veja refeições atualizadas diariamente: almoço e jantar com opções variadas. Funciona de 11h30 às 13h30 e 17h às 19h." />
-   <meta name="keywords" content="RU, teresina campus central, cardápio, almoço, jantar, cardápio semanal, ifpi, refeições, cardápio do refeitório, campus teresina central" />
+  <meta name="description"
+    content="Confira o cardápio semanal do Refeitório do IFPI Campus Teresina Central. Veja refeições atualizadas diariamente: almoço e jantar com opções variadas. Funciona de 11h30 às 13h30 e 17h às 19h." />
+  <meta name="keywords"
+    content="RU, teresina campus central, cardápio, almoço, jantar, cardápio semanal, ifpi, refeições, cardápio do refeitório, campus teresina central" />
   <meta property="og:title" content="Cardápio Semanal do Refeitório do IFPI" />
   <meta property="og:type" content="website">
-  <meta property="og:description" content="Veja o cardápio atualizado de almoço e jantar do Refeitório do IFPI Campus Teresina Central." />
+  <meta property="og:description"
+    content="Veja o cardápio atualizado de almoço e jantar do Refeitório do IFPI Campus Teresina Central." />
   <meta property="og:image" content="https://venerable-dolphin-c256bb.netlify.app/img/refeitorio_ifpi_1200x630.png">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:url" content="https://venerable-dolphin-c256bb.netlify.app/">
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:site" content="https://venerable-dolphin-c256bb.netlify.app/" />
+  <meta name="twitter:creator" content="euwilliamsousa" />
+  <meta name="twitter:title" content="Cardápio Semanal do Refeitório do IFPI" />
+  <meta name="twitter:description"
+    content="Veja o cardápio atualizado de almoço e jantar do Refeitório do IFPI Campus Teresina Central." />
+  <meta name="twitter:image" content="https://venerable-dolphin-c256bb.netlify.app/img/refeitorio_ifpi_1200x630.png" />
   <title>Cardápio Semanal no Refeitório do IFPI</title>
   <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
   <div class="app">
-<header class="app-header">
-  <div>
-    <h1>Cardápio Semanal</h1>
-    <p class="subtitle">Escolha a data e a refeição — otimizado para celular</p>
-    <p id="lastUpdate" class="update-info"></p>
-  </div>
+    <header class="app-header">
+      <div>
+        <h1>Cardápio Semanal</h1>
+        <p class="subtitle">Escolha a data e a refeição — otimizado para celular</p>
+        <p id="lastUpdate" class="update-info"></p>
+      </div>
 
-  <div class="header-actions">
-    <!-- <button id="prefersContrast" class="icon-btn" title="Alternar contraste">🔆</button> -->
-    <button id="darkToggle" class="icon-btn" aria-pressed="false" title="Ativar modo escuro">🌙</button>
-  </div>
-</header>
+      <div class="header-actions">
+        <!-- <button id="prefersContrast" class="icon-btn" title="Alternar contraste">🔆</button> -->
+        <button id="darkToggle" class="icon-btn" aria-pressed="false" title="Ativar modo escuro">🌙</button>
+      </div>
+    </header>
 
     <main class="main">
       <form id="filterForm" class="filter-form" onsubmit="return false;">
@@ -55,10 +67,10 @@
 
 
     <footer class="footer">
-       <p><strong>Horário de Funcionamento do Refeitório:</strong></p>
-       
-       <p> &rarr; 11h30 às 13h30 (almoço)</p>
-       <p> &rarr; 17h às 19h (jantar)</p>
+      <p><strong>Horário de Funcionamento do Refeitório:</strong></p>
+
+      <p> &rarr; 11h30 às 13h30 (almoço)</p>
+      <p> &rarr; 17h às 19h (jantar)</p>
     </footer>
   </div>
   <script type="application/ld+json">
@@ -78,4 +90,5 @@
   </script>
   <script src="script.js"></script>
 </body>
+
 </html>
