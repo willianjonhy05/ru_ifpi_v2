@@ -1,16 +1,17 @@
 {
-  "ultima_atualizacao": "08-12-2025",
-  "08-12": {
+  "ultima_atualizacao": "15-12-2025",
+  "15-12": {
     "dia": "segunda-feira",
     "almoco": [
-      "Estrogonofe de frango",
-      "Baião de Dois",
-      "Macarrão",
+      "Arroz",
+      "Feijão Preto",
+      "Lombo Suíno",
       "Salada",
-      "Fruta"
+      "Fruta",
+      "Farofa"
     ],
     "janta": [
-      "Tábua Mista",
+      "Trinchado de Carne",
       "Arroz",
       "Feijão com Legumes",
       "Farofa",
@@ -65,24 +66,6 @@
       "Arroz",
       "Feijão com legumes",
       "Macarrão",
-      "Salada",
-      "Fruta"
-    ]
-  },
-  "12-12": {
-    "dia": "sexta-feira",
-    "almoco": [
-      "Bife ao molho",
-      "Baião de dois",
-      "Macarrão",
-      "Salada",
-      "Fruta"
-    ],
-    "janta": [
-      "Frango assado",
-      "Arroz com açafrão",
-      "Feijão com legumes",
-      "Farofa",
       "Salada",
       "Fruta"
     ]
