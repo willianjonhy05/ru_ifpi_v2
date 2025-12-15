@@ -19,55 +19,7 @@
       "Fruta"
     ]
   },
-  "09-12": {
-    "dia": "terça-feira",
-    "almoco": [
-      "Feijoada",
-      "Arroz",
-      "Farofa",
-      "Salada",
-      "Fruta"
-    ],
-    "janta": [
-      "Cuscuz com ovos e calabresa",
-      "Chocolate Quente"
-    ]
-  },
-  "10-12": {
-    "dia": "quarta-feira",
-    "almoco": [
-      "Assado de panela",
-      "Arroz com açafrão",
-      "Feijão com legumes",
-      "Farofa",
-      "Salada",
-      "Fruta"
-    ],
-    "janta": [
-      "Maria Isabel",
-      "Creme de galinha",
-      "Feijão tropeiro",
-      "Salada",
-      "Fruta"
-    ]
-  },
-  "11-12": {
-    "dia": "quinta-feira",
-    "almoco": [
-      "Filé de frango ao molho rosé",
-      "Arroz",
-      "Feijão com legumes",
-      "Batata doce/macaxeira",
-      "Salada",
-      "Fruta"
-    ],
-    "janta": [
-      "Bife com cebolas",
-      "Arroz",
-      "Feijão com legumes",
-      "Macarrão",
-      "Salada",
-      "Fruta"
-    ]
-  }
+  
+
+ 
 }
