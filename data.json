@@ -19,7 +19,7 @@
       "Fruta"
     ]
   },
-    "16-12": {
+  "16-12": {
     "dia": "terça-feira",
     "almoco": [
       "Arroz com Frango",
@@ -36,13 +36,13 @@
       "Fruta"
     ]
   },
-    "17-12": {
+  "17-12": {
     "dia": "quarta-feira",
     "almoco": [
       "Baião",
       "Estrogonofe de Carne",
       "Macarrão",
-      "Salada",
+      "Salada"
     ],
     "janta": [
       "Bife com Cebolas",
@@ -53,14 +53,14 @@
       "Frutas"
     ]
   },
-    "18-12": {
+  "18-12": {
     "dia": "quinta-feira",
     "almoco": [
       "Arroz com açafrão",
       "Feijão",
       "Frango Assado",
       "Salada",
-      "Farofa",
+      "Farofa"
     ],
     "janta": [
       "Estrogonofe de Frango",
@@ -70,14 +70,14 @@
       "Fruta"
     ]
   },
-    "19-12": {
+  "19-12": {
     "dia": "sexta-feira",
     "almoco": [
       "Arroz",
       "Feijão",
       "Assado de Panela",
       "Salada",
-      "Farofa",
+      "Farofa"
     ],
     "janta": [
       "Assado de Panela",
@@ -87,7 +87,5 @@
       "Salada",
       "Fruta"
     ]
-  } 
-
- 
+  }
 }
